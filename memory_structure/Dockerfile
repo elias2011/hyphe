@@ -1,4 +1,4 @@
-FROM java:openjdk-6-jdk
+FROM java:openjdk-7-jdk
 
 
 ENV THRIFT_VERSION 0.8.0
