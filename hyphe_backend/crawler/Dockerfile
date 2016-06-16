@@ -1,21 +1,23 @@
-FROM buildpack-deps:wheezy
+FROM python:2.7
 
-ENV LANG C.UTF-8
+RUN apt-get update 
 
-RUN apt-get update \
-  && apt-get install python2.7-dev python-pip python-support --no-install-recommends -y \
-  && wget -q -P ./ https://github.com/medialab/scrapyd/raw/medialab-debian/debs/scrapyd_1.0~r0_all.deb \
-  && pip install service_identity \
+RUN pip install service_identity==14 \
+  && pip install cffi \
+  && pip install cryptography \
+  && pip install pyOpenSSL \
+  && pip install ndg-httpsclient \
+  && pip install pyasn1 \
   && pip install pymongo==2.7 \
   && pip install txmongo==0.6 \
   && pip install selenium==2.42.1 \
-  && pip install Scrapy==0.18 \
-  && dpkg -i scrapyd_1.0~r0_all.deb
+  && pip install urllib3[secure] \
+  && pip install Scrapy==0.24.6 \
+  && pip install scrapyd==1.0.1
 
 EXPOSE 6800
 
 VOLUME ["/var/lib/scrapyd"]
 VOLUME ["/var/log/scrapyd"]
 
-# Set scrapyd as run entrypoint
-CMD ["/usr/bin/scrapyd"]
+CMD ["scrapyd"]
