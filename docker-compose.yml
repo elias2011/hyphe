@@ -2,6 +2,7 @@ version: "2"
 services:
     backend:
        image: medialab/hyphe_backend:latest
+       restart: always
        links:
         - "mongo:mongo"
         - "crawler:crawler"
@@ -12,6 +13,7 @@ services:
         - HYPHE_CRAWLER_PORT=6800
     frontend:
        image: medialab/hyphe_frontend:latest
+       restart: always
        environment:
         - HYPHE_API_URI=api
        links:
@@ -20,9 +22,11 @@ services:
         - "8000:80"
     crawler:
        image: medialab/hyphe_crawler:latest
+       restart: always
        links:
         - "mongo:mongo"
        volumes:
         - ./config/scrapyd.config:/etc/scrapyd/conf.d/100-hyphe
     mongo:
        image: mongo:3.0
+       restart: always
