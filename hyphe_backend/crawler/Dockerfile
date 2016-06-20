@@ -15,6 +15,8 @@ RUN pip install service_identity==14 \
   && pip install Scrapy==0.24.6 \
   && pip install scrapyd==1.0.1
 
+COPY ./config/scrapyd.config /etc/scrapyd/conf.d/100-hyphe
+
 EXPOSE 6800
 
 VOLUME ["/var/lib/scrapyd"]

@@ -54,7 +54,7 @@ if [ ! $? == 0 ]; then exit 4; fi
 
 ### Build Backend
 echoBlue "Building Hyphe Crawler"
-$DOCKER build -t $organization/$images_prefix"crawler":$tag hyphe_backend/crawler
+$DOCKER build -t $organization/$images_prefix"crawler":$tag -f hyphe_backend/crawler/Dockerfile .
 if [ ! $? == 0 ]; then exit 4; fi
  
 
