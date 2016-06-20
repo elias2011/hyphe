@@ -2,7 +2,7 @@
 
 ### Variables
 images_prefix="hyphe_"
-organization="medialab"
+organization="scpomedialab"
 
 tag=$1
 if test -z "$tag"; then

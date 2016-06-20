@@ -1,7 +1,7 @@
 version: "2"
 services:
     backend:
-       image: medialab/hyphe_backend:latest
+       image: scpomedialab/hyphe_backend:latest
        restart: always
        links:
         - "mongo:mongo"
@@ -12,7 +12,7 @@ services:
         - HYPHE_CRAWLER_HOST=crawler
         - HYPHE_CRAWLER_PORT=6800
     frontend:
-       image: medialab/hyphe_frontend:latest
+       image: scpomedialab/hyphe_frontend:latest
        restart: always
        environment:
         - HYPHE_API_URI=api
@@ -21,7 +21,7 @@ services:
        ports:
         - "8000:80"
     crawler:
-       image: medialab/hyphe_crawler:latest
+       image: scpomedialab/hyphe_crawler:latest
        restart: always
        links:
         - "mongo:mongo"
