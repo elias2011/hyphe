@@ -136,12 +136,12 @@ class MongoDB(object):
 
     @inlineCallbacks
     def drop_corpus_collections(self, corpus):
-        yield self.queue(corpus).drop(safe=True)
-        yield self.pages(corpus).drop(safe=True)
-        yield self.jobs(corpus).drop(safe=True)
-        yield self.logs(corpus).drop(safe=True)
-        yield self.queries(corpus).drop(safe=True)
-        yield self.stats(corpus).drop(safe=True)
+        yield self.queue(corpus).drop()
+        yield self.pages(corpus).drop()
+        yield self.jobs(corpus).drop()
+        yield self.logs(corpus).drop()
+        yield self.queries(corpus).drop()
+        yield self.stats(corpus).drop()
 
     @inlineCallbacks
     def list_logs(self, corpus, job, **kwargs):
